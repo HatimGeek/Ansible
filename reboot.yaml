@@ -1,0 +1,9 @@
+---
+-
+  gather_facts: false
+  hosts: win
+  tasks:
+    -
+      name: reboots
+      win_updates:
+        reboot: yes
