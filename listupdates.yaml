@@ -1,7 +1,7 @@
 --- 
 - 
   gather_facts: false
-  hosts: 192.168.211.151
+  hosts: win
   tasks: 
     - 
       win_updates:
