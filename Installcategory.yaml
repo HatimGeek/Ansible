@@ -1,0 +1,12 @@
+---
+-
+  gather_facts: false
+  hosts: win
+  tasks:
+    -
+      name: Install categories
+      win_updates:
+        category_name:
+        - SecurityUpdates
+        - CriticalUpdates
+        - UpdateRollups

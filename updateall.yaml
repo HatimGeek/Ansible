@@ -1,0 +1,10 @@
+---
+-
+  gather_facts: false
+  hosts: win
+  tasks:
+    -
+      win_updates:
+        state: installed
+        log_path: C:\ansible_wu.txt
+

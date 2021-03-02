@@ -1,0 +1,14 @@
+---
+-
+  gather_facts: false
+  hosts: win
+  tasks:
+    -
+      name: Exclude updates based on the update title
+      win_updates:
+        category_name:
+        - SecurityUpdates
+        - CriticalUpdates
+        blacklist:
+        - Windows Malicious Software Removal Tool for Windows
+       

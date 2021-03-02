@@ -1,0 +1,13 @@
+---
+-
+  gather_facts: false
+  hosts: win
+  tasks:
+    -
+      name: Install with automatic reboots
+      win_updates:
+        category_name:
+        - SecurityUpdates
+        - CriticalUpdates
+        reboot: yes
+        reboot_timeout: 3600

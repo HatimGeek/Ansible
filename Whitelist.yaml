@@ -1,0 +1,13 @@
+---
+-
+  gather_facts: false
+  hosts: win
+  tasks:
+    -
+      name: Install based on KB numbers
+      win_updates:
+        whitelist:
+        - KB4535680
+        - KB4601318
+        log_path: C:\ansible_install.txt
+
