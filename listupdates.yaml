@@ -1,7 +1,7 @@
 --- 
 - 
   gather_facts: false
-  hosts: win
+  hosts: all
   tasks: 
     - 
       win_updates:
