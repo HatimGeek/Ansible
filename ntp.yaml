@@ -1,0 +1,9 @@
+---
+-
+  gather_facts: false
+  hosts: win
+  tasks:
+    -
+      name: Ntp Config
+      win_command: whoami
+      register: C:\whoami_out.txt
