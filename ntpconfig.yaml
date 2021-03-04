@@ -6,7 +6,7 @@
     -
       name: Ntp Config
       win_command: "{{ item }}"
-      loop:
+      with_items:
         - w32tm /query /peers
         - tzutil /g
         - w32tm /stripchart /computer:localhost /samples:0
