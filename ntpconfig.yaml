@@ -5,6 +5,7 @@
   tasks:
     -
       name: Ntp Config
-      win_command: - w32tm /query /peers
-                   - tzutil /g
-                   - time
+      win_command: "{{ item }}"
+      loop:
+        - w32tm /query /peers
+        - tzutil /g
