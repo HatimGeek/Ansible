@@ -6,4 +6,4 @@
     -
       name: Ntp Config
       win_command: whoami
-      register: C:\whoami_out.txt
+      register: whoami_out
