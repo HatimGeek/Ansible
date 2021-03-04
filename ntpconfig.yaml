@@ -5,4 +5,4 @@
   tasks:
     -
       name: Ntp Config
-      win_command: whoami
+      win_command: w32tm /query /configuration
