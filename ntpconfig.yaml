@@ -9,3 +9,4 @@
       loop:
         - w32tm /query /peers
         - tzutil /g
+        - win_command: w32tm /stripchart /computer:localhost /samples:0
