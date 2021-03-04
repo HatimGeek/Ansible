@@ -5,4 +5,6 @@
   tasks:
     -
       name: Ntp Config
-      win_command: w32tm /query /configuration
+      win_command: - w32tm /query /peers
+                   - tzutil /g
+                   - time
