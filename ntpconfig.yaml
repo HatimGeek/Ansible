@@ -2,11 +2,32 @@
 -
   gather_facts: false
   hosts: win
+  serial: 1
   tasks:
+    - 
+      name: Set hostname on conf file
+      local_action:
+        lineinfile line=" ----------{\\\"ansible_LAN_hostname\\\"=\\\"{{ inventory_hostname }}\\\"}----------" insertafter=EOF dest=/etc/ansible/out.txt
     -
       name: Ntp Config
-      win_command: "{{ item }}"
-      with_items:
-        - w32tm /query /peers
-        - tzutil /g
-        - w32tm /stripchart /computer:localhost /samples:0
+      win_command: w32tm /query /peers
+      register: ntpconfig
+    - 
+      name: copy ntp config  
+      local_action:
+        lineinfile line={{ ntpconfig.stdout }} insertafter=EOF dest=/etc/ansible/out.txt
+    -
+      name: fuseau horaire
+      win_command: w32tm /tz
+      register: ntpconfig
+    -
+      name: copy fuseau
+      local_action:
+        lineinfile line={{ ntpconfig.stdout }} insertafter=EOF dest=/etc/ansible/out.txt
+    -
+      name: temps actuel
+      win_command: w32tm /stripchart /computer:localhost /samples:0
+      register: ntpconfig
+    - name: copy temps
+      local_action:
+        lineinfile line={{ ntpconfig.stdout }} insertafter=EOF dest=/etc/ansible/out.txt 
